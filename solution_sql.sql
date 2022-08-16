@@ -13,3 +13,14 @@ SELECT name, population,area
   WHERE (population>250000000 OR area>3000000)
   AND NOT(population>250000000 AND area>3000000)
 ;
+
+
+--Germany (population 80 million) has the largest population of the countries in Europe. Austria (population 8.5 million) has 11% of the population of Germany.
+--Show the name and the population of each country in Europe. Show the population as a percentage of the population of Germany.
+--The format should be Name, Percentage for example:
+--Decimal places
+--You can use the function ROUND to remove the decimal places.
+--Percent symbol %
+--You can use the function CONCAT to add the percentage symbol.
+SELECT name, CONCAT(ROUND((population*100)/(SELECT population FROM world WHERE name='Germany'),0), '%')FROM world
+WHERE continent = 'Europe'
